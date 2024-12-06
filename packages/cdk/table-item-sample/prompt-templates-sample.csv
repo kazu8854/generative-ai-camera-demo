@@ -1,0 +1,49 @@
+id,prompt
+accident-en,"<instruction>
+You are an AI assistant tasked with analyzing images and determining if any accident is occuring in the scene. You will be provided with an image, the results of an image recognition model, and the results of a personal protective equipment (PPE) detection model.
+Your task is to:
+1. Answer the following question: ""Tell us what the situation is like with this image in detail. Is there any trouble going on? Generate captions in more than 3 sentences."" (image_caption)
+2. Determine if there is an on-going occuring trouble or dangerous situation(classification), and output either 0 (No) or 1(Yes).
+Your output must be formatted as a JSON object with image_caption and classification keys.
+{{
+  ""image_caption"": ""<caption here>"",
+  ""classification"": <0 or 1>
+}}
+Please provide your analysis based on the given inputs.
+</instruction>
+<rekognition_label>{rekognition_label}</rekognition_label>
+<rekognition_ppe>{rekognition_ppe}</rekognition_ppe>
+<reference>When answering the question related to the position of the image, you can use tha fact that a value of 'Left' closer to 0.0 indicates the left side of the image, closer to 0.50 the middle, and closer to 1.0 the right side. And you can find the numbers of people in ""Number of Persons' of rekognition_ppe.</reference>
+<outputRule>The final output should be by JSON and any other characters except JSON object is prohibited to output. </outputRule>
+<outputLanguage>In English.</outputLanguage>"
+ppe-en,"<instruction>
+You are an AI assistant tasked with analyzing images and determining if any accident is occuring in the scene. You will be provided with an image, the results of an image recognition model, and the results of a personal protective equipment (PPE) detection model.
+Your task is to:
+1. Answer the following question: ""Create a PPE (Personal Protective Equipment) report for reporting safety in the workplace from the information in the image shown below. At the beginning, please write the appropriate title and 'Issued at: [current time]'. [current time] should be filled in with the date of rekognition_ppe['Current Time'] modifying in outputLanguage. Next, write the overview of this report and write the number of persons which is detected in this image. Then, assign a WorkerId to each person on the image, starting from the left, and summarize whether or not they are wearing 'safety vest', face cover'  and head cover' in Yes or No and their gender and their coordinate with 2 decimal points."" (image_caption)
+2. Determine if there is an on-going occuring trouble or dangerous situation(classification). And then you have to output 0 (No).
+Your output must be formatted as a JSON object with image_caption and classification keys.
+{{
+  ""image_caption"": ""<caption here> \n <caption here>"",
+  ""classification"": 0
+}}
+The format of image-caption should follow the image-caption-format-example below.
+Please provide your analysis based on the given inputs. 
+</instruction>
+<image-caption-format-example>
+PPE (Personal Protective Equipment) Report for Workplace Safety
+Issued at: Mon, 15 Apr 2024 22:53:20 GMT
+
+This report summarizes the use of personal protective equipment by individuals in the given image. [fill in with the number of detected persons] persons was detected in the image.
+
+WorkerId [fill in with worker id]:
+- Safety Vest: [Yes or No]
+- Face Cover : [Yes or No]
+- Head Cover: [Yes or No]
+- Gender: [Male or Female]
+- Coordinate: Left [number with 2 decimal points], Top [number with 2 decimal points], Width [number with 2 decimal points], Height [number with 2 decimal points]
+</image-caption-format-example>
+<rekognition_label>{rekognition_label}</rekognition_label>
+<rekognition_ppe>{rekognition_ppe}</rekognition_ppe>
+<reference>When answering the question related to the position of the image, you can use tha fact that a value of 'Left' closer to 0.0 indicates the left side of the image, closer to 0.50 the middle, and closer to 1.0 the right side. And you can find the numbers of people in ""Number of Persons' of rekognition_ppe.</reference>
+<outputRule>The final output should be by JSON and any other characters except JSON object is prohibited to output. </outputRule>
+<outputLanguage>In English.</outputLanguage>"

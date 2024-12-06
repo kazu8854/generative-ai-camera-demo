@@ -1,0 +1,4 @@
+Pillow
+boto3
+numpy
+aws-xray-sdk
