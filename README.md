@@ -25,7 +25,7 @@ The complete code consists of edge part and  cloud part. The edge part sends the
 ### Prerequisites
 
 - Set up CDK on your local machine and in your AWS account. For more information, see: https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html
-- Set up Bedrock model access in the region you use with your AWS account. In this demo, you need to have an access to Anthropic Claude 3 (Sonnet). For more information, see: https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html
+- Set up Bedrock model access in the region you use with your AWS account. In this demo, you need to have an access to Anthropic Claude 3.5 Sonnet. For more information, see: https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html
 
 ### Deployment
 

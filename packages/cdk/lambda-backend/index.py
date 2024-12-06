@@ -19,7 +19,7 @@ smr_client = boto3.client("sagemaker-runtime")
 rek_client = boto3.client('rekognition')
 bedrock_client = boto3.client('bedrock-runtime', region_name="us-west-2")
 ddb_client = boto3.client('dynamodb')
-i2t_model = "claude3" # or set to "blip2"
+i2t_model = "claude3"
 
 
 def encode_image(img_file):
